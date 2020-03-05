@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div id="calculator" class="calculator">
+        <div id="cap" class="cap">
+          <h1>JS-Calc!</h1>
+          <div id=solar-panel></div>
+        </div>
+
+        <div id="display">
+          <p>0</p>
+        </div>
+
+        <div id="buttons" class="cointainer">
+          <div id="top" class="top row">
+            <button id="pi" class="pi col-2 btn btn-dark">π</button>
+            <button id="off" class="off col-2 btn btn-dark">OFF</button>
+          </div>
+          <div id="memory-row" class="row">
+            <button id="memory-clear" class="memory col-3 btn btn-dark">MC</button>
+            <button id="memory-recall" class="memory col-3 btn btn-dark">MR</button>
+            <button id="memory-minus" class="memory col-3 btn btn-dark">M-</button>
+            <button id="memory-plus" class="memory col-3 btn btn-dark">M+</button>
+            <button id="divide" class="operator col-3 btn btn-dark"></button>
+          </div>
+          <div id="middle-two" class="row">
+            <div class="col-2">
+              <button id="percent" class="operator btn btn-dark">%</button>
+              <button id="pos-neg" class="operator btn btn-dark">+/-</button>
+            </div>
+            <div class="col-2">
+              <button id="seven" class="number btn btn-dark">7</button>
+              <button id="four" class="number btn btn-dark">4</button>
+            </div>
+            <div class="col-2">
+              <button id="eight" class="number btn btn-dark">8</button>
+              <button id="five" class="number btn btn-dark">5</button>
+            </div>
+            <div class="col-2">
+              <button id="nine" class="number btn btn-dark">9</button>
+              <button id="six" class="number btn btn-dark">6</button>
+            </div>
+            <div class="col-2">
+              <button id="multiply" class="operator btn btn-dark">X</button>
+              <button id="subtract" class="operator btn btn-dark">-</button>
+            </div>
+          </div>
+          <div id="bottom-two" class="row">
+            <div class="col-2">
+              <button id="clear" class="clearing btn btn-dark">C</button>
+              <button id="all-clear" class="clearing btn btn-dark">AC</button>
+            </div>
+            <div class="col-2">
+              <button id="one" class="number btn btn-dark">1</button>
+              <button id="zero" class="number btn btn-dark">0</button>
+            </div>
+            <div class="col-2">
+              <button id="two" class="number btn btn-dark">2</button>
+              <button id="decimal" class="number btn btn-dark">.</button>
+            </div>
+            <div class="col-2">
+              <button id="three" class="number btn btn-dark">3</button>
+              <button id="equal" class="number btn btn-dark">=</button>
+            </div>
+            <button id="add" class="operator col-2 btn btn-dark">X</button>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
