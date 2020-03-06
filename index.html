@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Calculator</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -15,65 +15,42 @@
       <div id="calculator" class="calculator">
         <div id="cap" class="cap">
           <h1>JS-Calc!</h1>
-          <div id=solar-panel></div>
+          <div id=solar class="solar"></div>
         </div>
 
-        <div id="display">
-          <p>0</p>
-        </div>
+        <h2 id="display" class="display">0</h2>
 
-        <div id="buttons" class="cointainer">
-          <div id="top" class="top row">
-            <button id="pi" class="pi col-2 btn btn-dark">π</button>
-            <button id="off" class="off col-2 btn btn-dark">OFF</button>
+        <div id="keypad" class="keypad container">
+          <div id="top" class="row">
+            <div class="col-6"></div>
+            <button id="pi" class="top-btn col-3 btn btn-dark">π</button>
+            <button id="off" class="top-btn col-3 btn btn-dark">OFF</button>
           </div>
-          <div id="memory-row" class="row">
-            <button id="memory-clear" class="memory col-3 btn btn-dark">MC</button>
-            <button id="memory-recall" class="memory col-3 btn btn-dark">MR</button>
-            <button id="memory-minus" class="memory col-3 btn btn-dark">M-</button>
-            <button id="memory-plus" class="memory col-3 btn btn-dark">M+</button>
-            <button id="divide" class="operator col-3 btn btn-dark"></button>
-          </div>
-          <div id="middle-two" class="row">
-            <div class="col-2">
-              <button id="percent" class="operator btn btn-dark">%</button>
-              <button id="pos-neg" class="operator btn btn-dark">+/-</button>
-            </div>
-            <div class="col-2">
-              <button id="seven" class="number btn btn-dark">7</button>
-              <button id="four" class="number btn btn-dark">4</button>
-            </div>
-            <div class="col-2">
-              <button id="eight" class="number btn btn-dark">8</button>
-              <button id="five" class="number btn btn-dark">5</button>
-            </div>
-            <div class="col-2">
-              <button id="nine" class="number btn btn-dark">9</button>
-              <button id="six" class="number btn btn-dark">6</button>
-            </div>
-            <div class="col-2">
-              <button id="multiply" class="operator btn btn-dark">X</button>
-              <button id="subtract" class="operator btn btn-dark">-</button>
-            </div>
-          </div>
-          <div id="bottom-two" class="row">
-            <div class="col-2">
-              <button id="clear" class="clearing btn btn-dark">C</button>
-              <button id="all-clear" class="clearing btn btn-dark">AC</button>
-            </div>
-            <div class="col-2">
-              <button id="one" class="number btn btn-dark">1</button>
-              <button id="zero" class="number btn btn-dark">0</button>
-            </div>
-            <div class="col-2">
-              <button id="two" class="number btn btn-dark">2</button>
-              <button id="decimal" class="number btn btn-dark">.</button>
-            </div>
-            <div class="col-2">
-              <button id="three" class="number btn btn-dark">3</button>
-              <button id="equal" class="number btn btn-dark">=</button>
-            </div>
-            <button id="add" class="operator col-2 btn btn-dark">X</button>
+          <div class="row">
+            <button id="percent" class="main-btn col-3 btn btn-dark">%</button>
+            <button id="pos-neg" class="main-btn col-3 btn btn-dark">+/-</button>
+            <button id="clear" class="main-btn col-3 btn btn-dark">C</button>
+            <button id="all-clear" class="main-btn col-3 btn btn-dark">AC</button>
+            <button id="memory-clear" class="main-btn memory col-3 btn btn-primary">MC</button>
+            <button id="memory-recall" class="main-btn memory col-3 btn btn-primary">MR</button>
+            <button id="memory-minus" class="main-btn memory col-3 btn btn-primary">M-</button>
+            <button id="memory-plus" class="main-btn memory col-3 btn btn-primary">M+</button>
+            <button id="seven" class="main-btn col-3 btn btn-dark">7</button>
+            <button id="eight" class="main-btn col-3 btn btn-dark">8</button>
+            <button id="nine" class="main-btn col-3 btn btn-dark">9</button>
+            <button id="divide" class="main-btn col-3 btn btn-dark">÷</button>
+            <button id="four" class="main-btn col-3 btn btn-dark">4</button>
+            <button id="five" class="main-btn col-3 btn btn-dark">5</button>
+            <button id="six" class="main-btn col-3 btn btn-dark">6</button>
+            <button id="multiply" class="main-btn col-3 btn btn-dark">X</button>
+            <button id="one" class="main-btn col-3 btn btn-dark">1</button>
+            <button id="two" class="main-btn col-3 btn btn-dark">2</button>
+            <button id="three" class="main-btn col-3 btn btn-dark">3</button>
+            <button id="subtract" class="main-btn col-3 btn btn-dark">-</button>
+            <button id="zero" class="main-btn col-3 btn btn-dark">0</button>
+            <button id="decimal" class="main-btn col-3 btn btn-dark">.</button>
+            <button id="equal" class="main-btn col-3 btn btn-dark">=</button>
+            <button id="add" class="main-btn col-3 btn btn-dark">+</button>
           </div>
         </div>
       </div>

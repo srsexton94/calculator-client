@@ -1,110 +1,96 @@
 @import '~bootstrap/scss/bootstrap';
 
-// #calculator {
-//   background-color: #C9C3BF;
-//   width: 30vw;
-//   height: 45vw;
-//   margin: auto;
-//   margin-top: 5vw;
-//   margin-bottom: 10vw;
-//   padding: 2vw;
-//   border-style: solid;
-//   border-width: 2px;
-//   border-radius: 8%;
-//   box-shadow: 10px 10px 10px 1px #0F0F0F;
-// }
-//
-// #cap {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-// }
-// h1 {
-//   font-family: "IBM Plex Mono", sans-serif;
-//   font-size: 2.5vw;
-//   font-style: italic;
-//   margin-right: 3vw;
-// }
-//
-// #solar-panel {
-//   width: 12vw;
-//   height: 2.5vw;
-//   background-color: #660F12;
-//   border-style: solid;
-//   border-width: 0.5vw;
-//   border-radius: 10%;
-//   margin-left: 1vw;
-//   border-color: #262626;
-// }
-// #solar-panel:hover {
-//   animation-name: solar;
-//   animation-duration: 3s;
-// }
-// @keyframes solar {
-//   0%{ background-color: #660F12; }
-//   20%{ background-color: #B21A1F; }
-//   40%{ background-color: #660F12; }
-//   60%{ background-color: #B21A1F; }
-//   80%{ background-color: #660F12; }
-//   100%{ background-color: #B21A1F; }
-// }
-//
-// #display {
-//   display: block;
-//   margin: auto;
-//   height: 6vw;
-//   width: 25vw;
-//   border-style: solid;
-//   border-width: 1.5vw;
-//   border-radius: 5%;
-//   border-color: #262626;
-//   font-size: 15vh;
-//   font-family: "VT323", block;
-//   text-align: right;
-// }
-//
-// #buttons {
-//   position: relative;
-//   left: 1.5vw;
-//   bottom: 1vh;
-// }
-// .btn {
-//   height: 5vw;
-//   width: 5vw;
-//   font-size: 3vh;
-//   border-style: solid;
-//   border-radius: 15%;
-//   border-width: 1px;
-//   box-shadow: 1px 1px 10px #262626;
-//   color: #EADFD0;
-//   margin-bottom: 2px;
-//   background-color: #262626;
-// }
-// .memory {
-//   background-color: #438D9E;
-// }
-// .controls {
-//   background-color: #823639;
-// }
-// .top {
-//   height: 2vw;
-//   position: relative;
-//   left: 16vw;
-//   background-color: #262626;
-// }
-// #plus {
-//   position: absolute;
-//   height: 10vw;
-// }
-//
-//
-// .memory:active {
-//   background-color: #346F7C;
-// }
-// .controls:active {
-//   background-color: #562426;
-// }
-// .top:active, .operators:active, .numbers:active {
-//   background-color: #161616;
-// }
+$calc-color: #c9c3bf;
+$display: #cfcfcf;
+$border: #262626;
+$hover: #b21a1f;
+$memory: #438d9e;
+$solar: #660f12;
+$shadow: 10px 10px 10px 1px #0f0f0f;
+
+h1 {
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-size: 2em;
+  font-style: italic;
+  margin-left: .5em;
+  margin-top: 5%;
+}
+
+.btn {
+  background-color: $border;
+  border-color: $border;
+  box-shadow: $shadow;
+  color: $calc-color;
+  font-size: 3vh;
+  height: 5vh;
+  margin-bottom: 2px;
+  width: 5vw;
+}
+
+.calculator {
+  background-color: $calc-color;
+  border-color: $border;
+  border-radius: 8%;
+  box-shadow: $shadow;
+  height: 90vh;
+  margin: 2em auto 5em;
+  padding: 2vw;
+  width: 23em;
+}
+
+.cap {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.display {
+  background-color: $display;
+  border: 5px solid $border;
+  border-radius: 5%;
+  font-family: 'VT323', block;
+  font-size: 5em;
+  height: 1em;
+  margin: auto;
+  text-align: right;
+  width: 3.75em;
+}
+
+.keypad {
+  bottom: 1vh;
+  left: 1.5vw;
+  width: 80;
+
+  .top-btn {
+    height: 2em;
+  }
+
+  .main-btn {
+    height: 10%;
+    width: 10%;
+  }
+}
+
+.solar {
+  background-color: $solar;
+  border: .5em solid $border;
+  border-radius: 10%;
+  border-width: .5em;
+  height: 2.25em;
+  margin: 5% 0 0 3.25em;
+  margin-right: 0;
+  width: 8em;
+
+  :hover {
+    animation-duration: 3s;
+    animation-name: solar-hover;
+  }
+}
+
+@keyframes solar-hover {
+  0% { background-color: $solar; }
+  20% { background-color: $hover; }
+  40% { background-color: $solar; }
+  60% { background-color: $hover; }
+  80% { background-color: $solar; }
+  100% { background-color: $hover; }
+}
