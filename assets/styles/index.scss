@@ -1,12 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 $calc-color: #c9c3bf;
-$display: #cfcfcf;
+$display: #fff;
 $border: #262626;
 $hover: #b21a1f;
 $memory: #438d9e;
 $solar: #660f12;
-$shadow: 10px 10px 10px 1px #0f0f0f;
+$shadow: #0f0f0f;
 
 h1 {
   font-family: 'IBM Plex Mono', sans-serif;
@@ -16,23 +16,12 @@ h1 {
   margin-top: 5%;
 }
 
-.btn {
-  background-color: $border;
-  border-color: $border;
-  box-shadow: $shadow;
-  color: $calc-color;
-  font-size: 3vh;
-  height: 5vh;
-  margin-bottom: 2px;
-  width: 5vw;
-}
-
 .calculator {
   background-color: $calc-color;
   border-color: $border;
   border-radius: 8%;
-  box-shadow: $shadow;
-  height: 90vh;
+  box-shadow: 10px 10px 10px 1px $shadow;
+  height: 92vh;
   margin: 2em auto 5em;
   padding: 2vw;
   width: 23em;
@@ -49,24 +38,38 @@ h1 {
   border-radius: 5%;
   font-family: 'VT323', block;
   font-size: 5em;
-  height: 1em;
+  height: 1.25em;
   margin: auto;
   text-align: right;
   width: 3.75em;
 }
 
 .keypad {
-  bottom: 1vh;
-  left: 1.5vw;
-  width: 80;
+  margin: auto;
+  margin-bottom: 2%;
+  padding: 1em;
+  width: 90%;
 
-  .top-btn {
-    height: 2em;
+  .btn {
+    background-color: $border;
+    border: .1em solid $calc-color;
+    border-radius: 15%;
   }
 
   .main-btn {
-    height: 10%;
-    width: 10%;
+    height: 9vh;
+    width: 8vh;
+  }
+
+  .memory {
+    background-color: $memory;
+    height: 9vh;
+    width: 5vh;
+  }
+
+  .top-btn {
+    font-size: .75em;
+    height: 4vh;
   }
 }
 
