@@ -8,35 +8,48 @@ $memory: #438d9e;
 $solar: #660f12;
 $shadow: #0f0f0f;
 
-h1 {
-  font-family: 'IBM Plex Mono', sans-serif;
-  font-size: 2em;
-  font-style: italic;
-  margin-left: .5em;
-  margin-top: 5%;
-}
 
 .calculator {
   background-color: $calc-color;
-  border-color: $border;
+  border: 1px solid $border;
   border-radius: 8%;
   box-shadow: 10px 10px 10px 1px $shadow;
   height: 92vh;
   margin: 2em auto 5em;
   padding: 2vw;
-  width: 23em;
+  width: 25em;
 }
 
 .cap {
   display: flex;
   flex-flow: row nowrap;
+  margin-left: 1.25em;
+
+  h1 {
+    font-family: 'IBM Plex Mono', sans-serif;
+    font-size: 2em;
+    font-style: italic;
+    margin-left: .5em;
+    margin-top: 5%;
+  }
+
+  .solar {
+    background-color: $solar;
+    border: .5em solid $border;
+    border-radius: 10%;
+    border-width: .5em;
+    height: 2.5em;
+    margin: 5% 0 0 3.25em;
+    margin-right: 0;
+    width: 8em;
+  }
 }
 
 .display {
   background-color: $display;
   border: 5px solid $border;
   border-radius: 5%;
-  font-family: 'VT323', block;
+  font-family: 'VT323', monospace;
   font-size: 5em;
   height: 1.25em;
   margin: auto;
@@ -75,29 +88,4 @@ h1 {
     font-size: .8em;
     height: 4vh;
   }
-}
-
-.solar {
-  background-color: $solar;
-  border: .5em solid $border;
-  border-radius: 10%;
-  border-width: .5em;
-  height: 2.25em;
-  margin: 5% 0 0 3.25em;
-  margin-right: 0;
-  width: 8em;
-
-  :hover {
-    animation-duration: 3s;
-    animation-name: solar-hover;
-  }
-}
-
-@keyframes solar-hover {
-  0% { background-color: $solar; }
-  20% { background-color: $hover; }
-  40% { background-color: $solar; }
-  60% { background-color: $hover; }
-  80% { background-color: $solar; }
-  100% { background-color: $hover; }
 }
