@@ -41,14 +41,11 @@ const onOperator = event => {
   if ((display === '0' && (op === 'multiply' || op === 'divide')) || store.waiting) {
     ui.displayError()
   } else if (!store.op) {
-    store.num1 = parseFloat(display)
-    store.op = op
-    store.waiting = true
+    eq.setOperator(parseFloat(display), op)
   } else if (store.num1 && store.op && store.num2) {
-    store.num1 = eq.equals()
-    store.op = op
-    $('#display').text(store.num1)
-    store.waiting = true
+    const newNum1 = eq.equals()
+    eq.setOperator(newNum1, op)
+    $('#display').text(newNum1)
   }
 }
 
@@ -99,6 +96,41 @@ const onClear = event => {
   eq.clear()
 }
 
+const onMemory = event => {
+  event.preventDefault()
+
+  if (store.mem === 0) {
+    ui.displayError()
+
+    setTimeout(() => {
+      eq.clear()
+    }, 750)
+    return
+  }
+
+  switch (event.target.id) {
+    case 'memory-recall':
+      if (store.waiting) { store.waiting = false }
+      $('#display').text(store.mem)
+      break
+    case 'memory-clear':
+      store.mem = 0
+      break
+    case 'memory-plus':
+      store.num1 = parseFloat($('#display').text())
+      store.op = 'add'
+      store.num2 = store.mem
+      eq.equals()
+      break
+    case 'memory-minus':
+      store.num1 = parseFloat($('#display').text())
+      store.op = 'subtract'
+      store.num2 = store.mem
+      eq.equals()
+      break
+  }
+}
+
 const addHandlers = () => {
   $('.number').on('click', onNumber)
   $('#decimal').on('click', onDecimal)
@@ -107,6 +139,7 @@ const addHandlers = () => {
   $('#pos-neg').on('click', onPosNeg)
   $('#percent').on('click', onPercent)
   $('.clear').on('click', onClear)
+  $('.memory').on('click', onMemory)
 }
 
 module.exports = {

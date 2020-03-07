@@ -2,6 +2,12 @@
 
 let store = require('../store')
 
+const setOperator = (num1, op) => {
+  store.num1 = num1
+  store.op = op
+  store.waiting = true
+}
+
 const clear = () => {
   store.num1 = 0
   store.op = null
@@ -11,19 +17,19 @@ const clear = () => {
 }
 
 const divide = () => {
-  //
+  return store.num1 / store.num2
 }
 
 const multiply = () => {
-  //
+  return store.num1 * store.num2
 }
 
 const subtract = () => {
-  //
+  return store.num1 - store.num2
 }
 
 const add = () => {
-  //
+  return store.num1 + store.num2
 }
 
 const equals = () => {
@@ -48,6 +54,7 @@ const equals = () => {
 }
 
 module.exports = {
+  setOperator,
   clear,
   equals
 }

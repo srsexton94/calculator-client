@@ -1,7 +1,7 @@
 'use strict'
 
 const displayError = (display) => {
-  $('$display').text('ERROR')
+  $('#display').text('ERROR')
   setTimeout(() => { $('#display').text(display) }, 1000)
 }
 
