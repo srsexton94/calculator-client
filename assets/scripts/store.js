@@ -5,7 +5,8 @@ const store = {
   op: null,
   num2: 0,
   mem: 0,
-  waiting: false
+  waiting: false,
+  finished: false
 }
 
 module.exports = store

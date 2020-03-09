@@ -9,7 +9,10 @@ const onNumber = event => {
   const digit = event.target.id // sets a var with the number selected
   const display = $('#display').text() // sets a var with current display text
 
-  if (store.waiting) {
+  if (store.finished) {
+    $('#display').text(digit)
+    store.finished = false
+  } else if (store.waiting) {
     store.waiting = false
     ui.displayNum('0', digit)
   } else {
@@ -27,9 +30,10 @@ const onDecimal = event => {
     $('#display').text(display + '.') // add decimal to display
   }
 
-  if (store.waiting) {
+  if (store.waiting || store.finished) {
     $('#display').text('0.')
     store.waiting = false
+    store.finished = false
   }
 }
 
@@ -58,7 +62,10 @@ const onEquals = event => {
   } else if (store.num1 && store.op) {
     store.num2 = parseFloat(display)
     eq.equals()
+  } else {
+    store.mem = parseFloat(display)
   }
+  store.finished = true
 }
 
 const onPosNeg = event => {
@@ -78,14 +85,13 @@ const onPosNeg = event => {
 
 const onPercent = event => {
   event.preventDefault()
-  let display = $('#display').text()
+  const display = $('#display').text()
 
-  if (display.length === 1) {
-    display = '0' + display
-  } else if (display.length > 4) {
-    display = display.substring(0, 4)
+  let percent = parseFloat(display) / 100
+  if (percent.length >= 6) {
+    percent = display.substring(0, 6)
   }
-  $('#display').text('0.' + display)
+  $('#display').text(percent)
 }
 
 const onClear = event => {
@@ -100,14 +106,13 @@ const onMemory = event => {
   event.preventDefault()
 
   if (store.mem === 0) {
-    ui.displayError()
-
-    setTimeout(() => {
-      eq.clear()
-    }, 750)
+    const display = $('#display').text()
+    $('#display').text('NO MEM')
+    setTimeout(() => { $('#display').text(display) }, 750)
     return
   }
 
+  const mem = store.mem
   switch (event.target.id) {
     case 'memory-recall':
       if (store.waiting) { store.waiting = false }
@@ -119,14 +124,16 @@ const onMemory = event => {
     case 'memory-plus':
       store.num1 = parseFloat($('#display').text())
       store.op = 'add'
-      store.num2 = store.mem
+      store.num2 = mem
       eq.equals()
+      store.mem = mem
       break
     case 'memory-minus':
       store.num1 = parseFloat($('#display').text())
       store.op = 'subtract'
-      store.num2 = store.mem
+      store.num2 = mem
       eq.equals()
+      store.mem = mem
       break
   }
 }
