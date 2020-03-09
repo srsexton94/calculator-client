@@ -2,7 +2,7 @@
 
 const displayError = (display) => {
   $('#display').text('ERROR')
-  setTimeout(() => { $('#display').text(display) }, 1000)
+  setTimeout(() => { $('#display').text(display) }, 750)
 }
 
 const displayFlash = display => {

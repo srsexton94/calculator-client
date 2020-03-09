@@ -43,7 +43,7 @@ const onOperator = event => {
   const display = $('#display').text()
 
   if ((display === '0' && (op === 'multiply' || op === 'divide')) || store.waiting) {
-    ui.displayError()
+    ui.displayError(display)
   } else if (!store.op) {
     eq.setOperator(parseFloat(display), op)
   } else if (store.num1 && store.op && store.num2) {
@@ -58,7 +58,7 @@ const onEquals = event => {
   const display = $('#display').text()
 
   if (store.waiting) {
-    ui.displayError()
+    ui.displayError(display)
   } else if (store.num1 && store.op) {
     store.num2 = parseFloat(display)
     eq.equals()
@@ -70,17 +70,16 @@ const onEquals = event => {
 
 const onPosNeg = event => {
   event.preventDefault()
-  const display = $('#display').text()
+  let num = parseFloat($('#display').text())
 
   if (store.waiting) {
-    ui.displayError()
-  } else if (display.charAt(0) === '-') {
-    const pos = display.replace('-', '')
-    $('#display').text(pos)
-  } else {
-    const neg = '-' + display
-    $('#display').text(neg)
+    ui.displayError(num)
+  } else if (num < 0) {
+    num = Math.abs(num)
+  } else if (num > 0) {
+    num = -Math.abs(num)
   }
+  $('#display').text(num)
 }
 
 const onPercent = event => {
@@ -89,7 +88,7 @@ const onPercent = event => {
 
   let percent = parseFloat(display) / 100
   if (percent.length >= 6) {
-    percent = display.substring(0, 6)
+    // how to get fit the screen?
   }
   $('#display').text(percent)
 }
@@ -138,6 +137,20 @@ const onMemory = event => {
   }
 }
 
+const offOn = event => {
+  event.preventDefault()
+
+  if (event.target.id === 'on') {
+    $('#display').css('background-color', 'white')
+    $('.btn').removeClass('disable')
+    eq.clear()
+  } else {
+    $('#display').text('').css('background-color', 'grey')
+    $('.btn').addClass('disable')
+    $('#on').removeClass('disable')
+  }
+}
+
 const addHandlers = () => {
   $('.number').on('click', onNumber)
   $('#decimal').on('click', onDecimal)
@@ -147,6 +160,7 @@ const addHandlers = () => {
   $('#percent').on('click', onPercent)
   $('.clear').on('click', onClear)
   $('.memory').on('click', onMemory)
+  $('.power').on('click', offOn)
 }
 
 module.exports = {

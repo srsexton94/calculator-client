@@ -45,6 +45,10 @@ $shadow: #0f0f0f;
   }
 }
 
+.disable {
+  pointer-events: none;
+}
+
 .display {
   background-color: $display;
   border: 5px solid $border;
@@ -84,7 +88,7 @@ $shadow: #0f0f0f;
     width: 5vh;
   }
 
-  .top-btn {
+  .power {
     font-size: .8em;
     height: 4vh;
   }
