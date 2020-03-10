@@ -6,22 +6,30 @@ const eq = require('./eq')
 
 const onNumber = event => {
   event.preventDefault() // prevents page refresh
-  const digit = event.target.id // sets a var with the number selected
-  const display = $('#display').text() // sets a var with current display text
 
-  if (store.finished) {
-    $('#display').text(digit)
+  const digit = event.target.id // the number selected
+  const display = $('#display').text() // a string of what is currently on display
+
+  // if the calculator is waiting for a new number...
+  if (store.finished || store.waiting) {
+    // tell it is no longer waiting for a new number
     store.finished = false
-  } else if (store.waiting) {
     store.waiting = false
+    // and set the screen as if it was blank(`0`) before
     ui.displayNum('0', digit)
   } else {
     ui.displayNum(display, digit)
+  }
+
+  // if the user does "the thing"...
+  if ($('#display').text() === '0.7734') {
+    ui.easterEgg() // display easter egg action!
   }
 }
 
 const onDecimal = event => {
   event.preventDefault() // prevents page refresh
+
   const display = $('#display').text() // sets a var with current display text
 
   if (display.length >= 6) { // if number is too long flash to indicate reject
@@ -30,6 +38,8 @@ const onDecimal = event => {
     $('#display').text(display + '.') // add decimal to display
   }
 
+  // if the calculator expects a new number entry, add a `0` before the decimal
+  // also tell the calculator to no longer expect a new number entry
   if (store.waiting || store.finished) {
     $('#display').text('0.')
     store.waiting = false
@@ -88,7 +98,7 @@ const onPercent = event => {
 
   let percent = parseFloat(display) / 100
   if (percent.length >= 6) {
-    // how to get fit the screen?
+    percent = eq.toXPlaces(percent.toString(), 6)
   }
   $('#display').text(percent)
 }

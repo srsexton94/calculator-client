@@ -20,8 +20,13 @@ const displayNum = (display, num) => {
   }
 }
 
+const easterEgg = () => {
+  console.log('Easter Egg coming soon to a bunny near you!')
+}
+
 module.exports = {
   displayError,
   displayFlash,
-  displayNum
+  displayNum,
+  easterEgg
 }
