@@ -110,71 +110,79 @@ const onPercent = event => {
   event.preventDefault() // prevents page refresh
   const display = $('#display').text() // string of display text
 
-  let percent = (parseFloat(display) / 100).toString() // divides the number-ified display text by 100
+  // divides the number-ified display text by 100 and turns it back into a string
+  let percent = (parseFloat(display) / 100).toString()
   if (percent.length >= 6) {
-    percent = eq.toXPlaces(percent, 6)
+    percent = eq.toXPlaces(percent, 6) // if the number is too long, round it
   }
-  $('#display').text(percent)
+  $('#display').text(percent) // either way, display the answer
 }
 
 const onClear = event => {
-  event.preventDefault()
+  event.preventDefault() // prevents page refresh
+
+  // if 'all-clear' then reset memory
   if (event.target.id === 'all-clear') {
     store.mem = 0
   }
+  // either way, reset rest of calculator
   eq.clear()
 }
 
 const onMemory = event => {
-  event.preventDefault()
+  event.preventDefault() // prevents page refresh
 
+  // if there is no memory stored, display a 'no memory' message
   if (store.mem === 0) {
     const display = $('#display').text()
     $('#display').text('NO MEM')
-    setTimeout(() => { $('#display').text(display) }, 750)
-    return
+    setTimeout(() => { $('#display').text(display) }, 750) // restore in 3/4 seconds
+    return // stop running function here
   }
 
-  const mem = store.mem
+  const mem = store.mem // copy the value currently in mem for later use
   switch (event.target.id) {
     case 'memory-recall':
-      if (store.waiting) { store.waiting = false }
-      $('#display').text(store.mem)
+      store.waiting = false // in case calculator was awaiting a 2nd operand, reset it
+      $('#display').text(store.mem) // display the memory value
       break
     case 'memory-clear':
-      store.mem = 0
+      store.mem = 0 // clears the memory value
       break
     case 'memory-plus':
+      // store the display value as the first operand and 'add' as op
       store.num1 = parseFloat($('#display').text())
       store.op = 'add'
-      store.num2 = mem
-      eq.equals()
-      store.mem = mem
+      store.num2 = mem // store the memory value as the second operand
+      eq.equals() // calculate!
+      store.mem = mem // reset memory value to what it was before
       break
     case 'memory-minus':
+      // store the display value as the first operand and 'subtract' as op
       store.num1 = parseFloat($('#display').text())
       store.op = 'subtract'
-      store.num2 = mem
-      eq.equals()
-      store.mem = mem
+      store.num2 = mem // store the memory value as the second operand
+      eq.equals() // calculate!
+      store.mem = mem // reset memory value to what it was before
       break
   }
 }
 
 const offOn = event => {
-  event.preventDefault()
+  event.preventDefault() // prevents page refresh
 
-  if (event.target.id === 'on') {
+  if (event.target.id === 'on') { // ON? screen bright! buttons on! calc clear!
     $('#display').css('background-color', 'white')
     $('.btn').removeClass('disable')
     eq.clear()
-  } else {
+  } else { // turning OFF? buttons off, clear display, turn grey... :'(
     $('#display').text('').css('background-color', 'grey')
     $('.btn').addClass('disable')
     $('#on').removeClass('disable')
   }
 }
 
+// event handlers for all of the above
 const addHandlers = () => {
   $('.number').on('click', onNumber)
   $('#decimal').on('click', onDecimal)
@@ -185,6 +193,10 @@ const addHandlers = () => {
   $('.clear').on('click', onClear)
   $('.memory').on('click', onMemory)
   $('.power').on('click', offOn)
+  $('#solar')
+    .on('mouseenter', ui.solarPower)
+    .on('click', ui.solarPower) // adds click alternative for mobile
+    .on('mouseleave', ui.solarDone)
 }
 
 module.exports = {
