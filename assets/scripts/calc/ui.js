@@ -21,7 +21,15 @@ const displayNum = (display, num) => {
 }
 
 const easterEgg = () => {
-  console.log('Easter Egg coming soon to a bunny near you!')
+  const greeting = 'hello!'
+  const rainbow = ['#FF0000', '#FF7F00', '#FFFF00', '#008000', '#0000FF', '#800080']
+  let result = ''
+  for (let i = 0; i < greeting.length; i++) {
+    const color = rainbow[i]
+    result += `<font style='color: ${color}'>${greeting.substr(i, 1)}</font>`
+  }
+  $('#display').html(result).css('background-color', 'black')
+  setTimeout(() => { $('#display').text('0.7734').css('background-color', 'white') }, 2500)
 }
 
 module.exports = {
