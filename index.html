@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Calculator</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div id="calculator" class="calculator">
+        <div id="cap" class="cap">
+          <h1>JS-Calc!</h1>
+          <div id="solar" class="solar"></div>
+        </div>
+
+        <h2 id="display" class="display">0</h2>
+
+        <div id="keypad" class="keypad container">
+          <div id="top" class="row">
+            <div class="col-6"></div>
+            <button id="on" class="power col-3 btn btn-dark">ON</button>
+            <button id="off" class="power col-3 btn btn-dark">OFF</button>
+          </div>
+          <div class="row">
+            <button id="percent" class="main-btn col-3 btn btn-dark">%</button>
+            <button id="pos-neg" class="main-btn col-3 btn btn-dark">+/-</button>
+            <button id="clear" class="main-btn clear col-3 btn btn-dark">C</button>
+            <button id="all-clear" class="main-btn clear col-3 btn btn-dark">AC</button>
+            <button id="memory-clear" class="main-btn memory col-3 btn btn-primary">MC</button>
+            <button id="memory-recall" class="main-btn memory col-3 btn btn-primary">MR</button>
+            <button id="memory-minus" class="main-btn memory col-3 btn btn-primary">M-</button>
+            <button id="memory-plus" class="main-btn memory col-3 btn btn-primary">M+</button>
+            <button id="7" class="main-btn number col-3 btn btn-dark">7</button>
+            <button id="8" class="main-btn number col-3 btn btn-dark">8</button>
+            <button id="9" class="main-btn number col-3 btn btn-dark">9</button>
+            <button id="divide" class="main-btn op col-3 btn btn-dark">÷</button>
+            <button id="4" class="main-btn number col-3 btn btn-dark">4</button>
+            <button id="5" class="main-btn number col-3 btn btn-dark">5</button>
+            <button id="6" class="main-btn number col-3 btn btn-dark">6</button>
+            <button id="multiply" class="main-btn op col-3 btn btn-dark">x</button>
+            <button id="1" class="main-btn number col-3 btn btn-dark">1</button>
+            <button id="2" class="main-btn number col-3 btn btn-dark">2</button>
+            <button id="3" class="main-btn number col-3 btn btn-dark">3</button>
+            <button id="subtract" class="main-btn op col-3 btn btn-dark">-</button>
+            <button id="0" class="main-btn number col-3 btn btn-dark">0</button>
+            <button id="decimal" class="main-btn col-3 btn btn-dark">.</button>
+            <button id="equals" class="main-btn col-3 btn btn-dark">=</button>
+            <button id="add" class="main-btn op col-3 btn btn-dark">+</button>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
